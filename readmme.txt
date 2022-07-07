@@ -1,0 +1,15 @@
+Machine learning project:
+- Requirement: 
+Python version 3.7.13
+Numpy version 1.12.6
+Panda's version 1.3.5.
+Seaborn version 0.11.2
+category_encoders version 2.5.0
+Scikit learn version 1.0.2
+Tensorflow version 2.8.2
+- Train model:
++ !python main.py train forest <num_trees> <max_depth> <model_save_directory> <csv_directory>: Random forest training and return saved model.
++ !python main.py train ridge_kernel <kernel_name> <alpha> <model_save_directory> <csv_directory>: Kernel ridge regression training and return saved model
++ !python main.py train gaussian_process <kenrel_name> <alpha> <model_save_directory> <csv_directory>: Gaussian process training and return saved model
++ !python main.py train enn <number_neurons> <model_save_directory> <csv_directory>: Ensemble neural network training and return saved model
+- Test model: !python main.py test <model_save_directory> <csv_directory>: Load trained model and perform a test on a datapoint test set.
