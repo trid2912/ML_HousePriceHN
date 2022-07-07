@@ -53,8 +53,9 @@ def data_preprocess(directory, train_test=True):
     if train_test:
         return X_train, X_test, y_train, y_test
     else:
-        return X.to_numpy(), y.to_numpy(), 34
         print(df.iloc[34, :])
+        return X.to_numpy(), y.to_numpy(), 34
+        
 
 if __name__ == "__main__":
     X_train, X_test, y_train, y_test = data_preprocess(sys.argv[1])
