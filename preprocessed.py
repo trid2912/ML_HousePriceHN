@@ -54,8 +54,8 @@ def data_preprocess(directory, train_test=True):
     if train_test:
         return X_train, X_test, y_train, y_test
     else:
-        print(dfa.iloc[34, :])
-        return X.to_numpy(), y.to_numpy(), 34
+        print(dfa.iloc[37, :-1])
+        return X.to_numpy(), y.to_numpy(), 37
         
 
 if __name__ == "__main__":
