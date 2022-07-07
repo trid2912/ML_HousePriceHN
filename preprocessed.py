@@ -15,7 +15,7 @@ def IQR(df, column, qi = 1.5):
 
 def data_preprocess(directory, train_test=True):
     df_or = pd.read_csv(directory)
-    df = df.rename(columns = {"Ngày": "Date", "Địa chỉ" :"Address", "Quận": "District", "Huyện": "Ward", "Loại hình nhà ở": "House_type",
+    df = df_or.rename(columns = {"Ngày": "Date", "Địa chỉ" :"Address", "Quận": "District", "Huyện": "Ward", "Loại hình nhà ở": "House_type",
                      "Giấy tờ pháp lý": "Legal_status","Số tầng": "num_floors","Số phòng ngủ": "num_bedrooms", "Diện tích": "Area",
                      "Dài": "Length", "Rộng": "Width","Giá/m2": "Price"})
     df.drop(df.columns[0], axis =1, inplace = True)
@@ -53,7 +53,7 @@ def data_preprocess(directory, train_test=True):
     if train_test:
         return X_train, X_test, y_train, y_test
     else:
-        print(df_or.iloc[34, :])
+        print(df_or.loc[34, :])
         return X.to_numpy(), y.to_numpy(), 34
         
 
