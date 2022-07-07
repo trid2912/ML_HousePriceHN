@@ -96,22 +96,14 @@ def ensemble_neural_network(neurons=25, model_name = 'enn', data_dir = 'VN_housi
 
 def load_model(model_dir, input_data_dir="VN_housing_dataset.csv"):
     model = load(model_dir)
-    X, y = data_preprocess(input_data_dir, train_test=False)
-    print("Model MAE on test set", mean_absolute_error(y, model.predict(X)))
-    print("Model MSE on test set", mean_squared_error(y, model.predict(X)))
-    print("Model MAPE on test set", mean_absolute_percentage_error(y, model.predict(X)))
+    X, y, i = data_preprocess(input_data_dir, train_test=False)
     print("The prediction output:")
-    for i in list(model.predict(X)):
-        print(i)
+    print(model.predict(X)[i])
 
 def load_keras_model(model_dir, input_data_dir="VN_housing_dataset.csv"):
     model = tf.keras.models.load_model(model_dir)
     X, y = data_preprocess(input_data_dir, train_test=False)
     X = tf.convert_to_tensor(X, dtype=tf.float64)
     y = tf.convert_to_tensor(y, dtype=tf.float64)
-    print("Model MAE on test set", mean_absolute_error(y.numpy(), model.predict(X)))
-    print("Model MSE on test set", mean_squared_error(y.numpy(), model.predict(X)))
-    print("Model MAPE on test set", mean_absolute_percentage_error(y.numpy(), model.predict(X)))
     print("The prediction output:")
-    for i in list(model.predict(X)):
-        print(i)
+    print(model.predict(X)[i])
