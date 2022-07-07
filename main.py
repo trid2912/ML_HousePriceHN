@@ -14,8 +14,8 @@ if (sys.argv[1] == 'train'):
         print("Invalid input")
 elif (sys.argv[1] == "test"):
     if sys.argv[2][-2:] == "h5":
-        load_keras_model(sys.argv[3], sys.argv[4])
+        load_keras_model(sys.argv[2], sys.argv[3])
     else:
-        load_model(sys.argv[3], sys.argv[4])
+        load_model(sys.argv[2], sys.argv[3])
 else:
     print("Invalid input")
