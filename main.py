@@ -12,7 +12,7 @@ if (sys.argv[1] == 'train'):
         ensemble_neural_network(sys.argv[3], sys.argv[4], sys.argv[5])
     else:
         print("Invalid input")
-else if (sys.argv[1] == "test"):
+elif (sys.argv[1] == "test"):
     if sys.argv[2][-2:] == "h5":
         load_keras_model(sys.argv[3], sys.argv[4])
     else:
