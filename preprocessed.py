@@ -14,8 +14,8 @@ def IQR(df, column, qi = 1.5):
     return df_processed
 
 def data_preprocess(directory, train_test=True):
-    df_or = pd.read_csv(directory)
-    df = df_or.rename(columns = {"Ngày": "Date", "Địa chỉ" :"Address", "Quận": "District", "Huyện": "Ward", "Loại hình nhà ở": "House_type",
+    df = pd.read_csv(directory)
+    df = df.rename(columns = {"Ngày": "Date", "Địa chỉ" :"Address", "Quận": "District", "Huyện": "Ward", "Loại hình nhà ở": "House_type",
                      "Giấy tờ pháp lý": "Legal_status","Số tầng": "num_floors","Số phòng ngủ": "num_bedrooms", "Diện tích": "Area",
                      "Dài": "Length", "Rộng": "Width","Giá/m2": "Price"})
     df.drop(df.columns[0], axis =1, inplace = True)
@@ -34,7 +34,8 @@ def data_preprocess(directory, train_test=True):
     df.drop(["District"], axis=1, inplace = True)
     df = df[((df["Area"] >= 30) & (df["Area"] <= 300))]
     df = df[df["num_floors"] <= 8]
-    df = IQR(df, 'Price')
+    dfa = IQR(df, 'Price')
+    df = dfa.copy()
     df.loc[df["Legal_status"] == "Đã có sổ", "Legal_status"] = 4
     df.loc[df["Legal_status"] == "Đang chờ sổ", "Legal_status"] = 3
     df.loc[df["Legal_status"] == "Giấy tờ khác", "Legal_status"] = 2
@@ -53,7 +54,7 @@ def data_preprocess(directory, train_test=True):
     if train_test:
         return X_train, X_test, y_train, y_test
     else:
-        print(df_or.loc[34, :])
+        print(dfa.loc[34, :])
         return X.to_numpy(), y.to_numpy(), 34
         
 
