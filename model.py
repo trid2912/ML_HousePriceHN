@@ -10,6 +10,7 @@ from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error,
 import tensorflow as tf
 import os
 from preprocessed import data_preprocess
+import pickle
 
 def random_forest_model(num_trees=400, max_depth=20, model_name = 'rf', data_dir = 'VN_housing_dataset.csv'):
     model = RandomForestRegressor(n_estimators=num_trees, max_depth=max_depth, min_samples_leaf=2, max_features='sqrt')
@@ -96,14 +97,13 @@ def ensemble_neural_network(neurons=25, model_name = 'enn', data_dir = 'VN_housi
 
 def load_model(model_dir, input_data_dir="VN_housing_dataset.csv"):
     model = load(model_dir)
-    X, y, i = data_preprocess(input_data_dir, train_test=False)
+    X = data_preprocess(input_data_dir, "encoder.pkl")
     print("The prediction output:")
-    print(model.predict(X)[i])
+    print(model.predict(X))
 
 def load_keras_model(model_dir, input_data_dir="VN_housing_dataset.csv"):
     model = tf.keras.models.load_model(model_dir)
-    X, y = data_preprocess(input_data_dir, train_test=False)
+    X = data_preprocess(input_data_dir, "encoder.pkl")
     X = tf.convert_to_tensor(X, dtype=tf.float64)
-    y = tf.convert_to_tensor(y, dtype=tf.float64)
     print("The prediction output:")
-    print(model.predict(X)[i])
+    print(model.predict(X))
