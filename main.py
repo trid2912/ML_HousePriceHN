@@ -5,9 +5,9 @@ if (sys.argv[1] == 'train'):
     if (sys.argv[2] == "forest"):
         random_forest_model(int(sys.argv[3]), int(sys.argv[4]), sys.argv[5], sys.argv[6])
     elif (sys.argv[2] == "ridge_kernel"):
-        kernel_ridge_regression(sys.argv[3], int(sys.argv[4]), sys.argv[5], sys.argv[6])
+        kernel_ridge_regression(sys.argv[3], float(sys.argv[4]), sys.argv[5], sys.argv[6])
     elif (sys.argv[2] == "gaussian_process"):
-        gaussian_process_regression(sys.argv[3], int(sys.argv[4]), sys.argv[5], sys.argv[6])
+        gaussian_process_regression(sys.argv[3], float(sys.argv[4]), sys.argv[5], sys.argv[6])
     elif (sys.argv[2] == "enn"):
         ensemble_neural_network(int(sys.argv[3]), sys.argv[4], sys.argv[5])
     else:
