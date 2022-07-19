@@ -1,4 +1,4 @@
-from model import random_forest_model, kernel_ridge_regression, gaussian_process_regression, load_model, load_keras_model
+from model import random_forest_model, kernel_ridge_regression, gaussian_process_regression, load_model, load_keras_model, ensemble_neural_network
 import sys
 
 if (sys.argv[1] == 'train'):
